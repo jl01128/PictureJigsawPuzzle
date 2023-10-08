@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Menu</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( "#menu" ).menu();
+
+      // Add event listener to the menu items
+      $("#menu li").on("click", function() {
+        
+        var selectedItem = $(this).text().trim();
+
+        if (selectedItem === "Puzzle One") {
+          window.location.href = "firstPuzzle.html"; // Redirect to first puzzle page
+        } else if (selectedItem === "Puzzle Two") {
+          window.location.href = "secondPuzzle.html"; // Redirect to second puzzle page
+        }
+      });
+    });
+  </script>
+  <style>
+  </style>
+</head>
+<body>
+
+<div>Puzzle Game</div> 
+<div class="piece" ></div> 
+
+<ul id="menu">
+  
+  <li><div>Puzzle One</div></li>
+  <li><div>Puzzle Two</div></li>
+</ul>
+ 
+ 
+</body>
+</html>

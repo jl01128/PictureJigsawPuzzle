@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Puzzle</title>
+<script src="jquery-1.8.2.min.js"></script>
+<style>
+.main-container{background:#fff; width:950px; height:950px; text-align:center;}
+button{width:300px; height:228px; background:#CCC; float:left; margin:0px; color:#fff; font-size:18px; }
+button:hover{background:#9CF;}
+span{width:100%; color:#900; font-family:"Comic Sans MS", cursive;}
+</style>
+</head>
+<body>
+<h3>Image Puzzle...</h3>
+<div class="main-container">    
+    <button alt="" name="1" value="1" id="1" style="background: url(image.jpg) no-repeat;">1</button>
+    <button alt="" name="2" value="2" id="2" style="background: url(dahlia-red-blossom-bloom-60597_02.jpg) no-repeat;">2</button>
+    <button alt="" name="3" value="3" id="3" style="background: url(dahlia-red-blossom-bloom-60597_03.jpg) no-repeat;">3</button>
+    <button alt="" name="4" value="4" id="4" style="background: url(dahlia-red-blossom-bloom-60597_04.jpg) no-repeat;">4</button>
+    <button alt="" name="5" value="5" id="5" style="background: url(dahlia-red-blossom-bloom-60597_05.jpg) no-repeat;">5</button>
+    <button alt="" name="6" value="6" id="6" style="background: url(dahlia-red-blossom-bloom-60597_06.jpg) no-repeat;">6</button>
+    <button alt="" name="7" value="7" id="7" style="background: url(dahlia-red-blossom-bloom-60597_07.jpg) no-repeat;">7</button>
+    <button alt="" name="8" value="8" id="8"></button>
+    <button alt="" name="9" value="9" id="9" style="background: url(dahlia-red-blossom-bloom-60597_08.jpg) no-repeat;">8</button>
+</div>
+<span>TEST</span>
+</body>
+</html>
+<script>
+$(document).ready(function(){
+var upval, downval, leftval, rightval, txt, bVal;
+$("button").click(function(){
+    txt = $(this).text();
+    bVal = $(this).val();   
+    if(txt != ""){
+        if((bVal != 1) && (bVal != 2) &&(bVal != 3)){
+            upval = eval(eval(bVal)-eval(3));           
+            console.log(bVal+'- 3 = '+upval);
+            var upTxt = $("#"+upval).text();
+            if(upTxt == ""){            
+                $("#"+upval).text(txt);
+                $(this).text("");
+                $(this).css({'background': ''});
+                $("#"+upval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
+            }
+        }
+        if((bVal != 7) && (bVal != 8) &&(bVal != 9)){
+            downval = eval(eval(bVal)+ eval(3));            
+            console.log(bVal+'+3 = '+downval);
+            var downTxt = $("#"+downval).text();
+            if(downTxt == ""){          
+                $("#"+downval).text(txt);
+                $(this).text("");
+                $(this).css({'background': ''});
+                $("#"+downval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
+            }
+        }
+        if((bVal != 1) && (bVal != 4) &&(bVal != 7)){
+            leftval = eval(eval(bVal)-eval(1)); 
+            console.log(bVal+'-1 = '+leftval);        
+            var leftTxt = $("#"+leftval).text();
+            if(leftTxt == ""){          
+                $("#"+leftval).text(txt);
+                $(this).text("");
+                $(this).css({'background': ''});
+                $("#"+leftval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
+            }
+        }
+        if((bVal != 3) && (bVal != 6) &&(bVal != 9)){
+            rightval = eval(eval(bVal)+ eval(1));
+            console.log(bVal+'+1 = '+rightval);           
+            var rightTxt = $("#"+rightval).text();          
+            if(rightTxt == ""){                 
+                $("#"+rightval).text(txt);
+                $(this).text("");
+                $(this).css({'background': ''});
+                $("#"+rightval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
+            }
+        }
+        var one = $("#1").text();
+        var two = $("#2").text();
+        var three = $("#3").text();
+        var four = $("#4").text();
+        var five = $("#5").text();
+        var six = $("#6").text();
+        var seven = $("#7").text();
+        var eight = $("#8").text();
+        var nine = $("#9").text();
+
+        if((one == "1")&&(two == "2")&&(three == "3")&&(four == "4")&&(five == "5")&&(six == "6")&&(seven == "7")&&(eight == "8")&&(nine == "")){           
+            alert("Success");
+            $("button").attr("disabled", "disabled");
+        }               
+    }   
+});
+
+});
+
+
+</script>
