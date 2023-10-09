@@ -12,28 +12,65 @@ body {
 .ui-menu { 
     width: 150px; 
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-weight: bold;
 }
 
-.piece {
-    width: 100px;
-    height: 100px;
+.image {
+    width: 300px;
+    height: 300px;
     background-image: url('image.jpg');
     background-size: cover;
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
-.controls {
+.controller {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 75%;
+    left: 49%;
     transform: translate(-50%, -50%);
 }
 
+.resetButton{
+    width: 75px;
+    height: 50px;
+    object-fit: cover; 
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
 
+}
+
+.resetButton2{
+    width: 75px;
+    height: 50px;
+    object-fit: cover; 
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+
+}
+
+.returnButton{
+    width: 75px;
+    height: 50px;
+    object-fit: cover; 
+    font-weight: bold;
+
+}
+
+.gameTitle {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

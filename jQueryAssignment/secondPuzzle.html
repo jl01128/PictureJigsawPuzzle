@@ -1,100 +1,97 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Puzzle</title>
-<script src="jquery-1.8.2.min.js"></script>
-<style>
-.main-container{background:#fff; width:950px; height:950px; text-align:center;}
-button{width:300px; height:228px; background:#CCC; float:left; margin:0px; color:#fff; font-size:18px; }
-button:hover{background:#9CF;}
-span{width:100%; color:#900; font-family:"Comic Sans MS", cursive;}
-</style>
+	<title>Solve Puzzle</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/trontastic/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script>
+		$(function() {
+			$(".moveit").draggable();
+			$(".droppable-area").droppable({
+				drop: function(event, ui) {
+					$(ui.helper).appendTo(this).css({position: "absolute", top: 0, left: 0})
+				}
+			});
+		});
+
+		function resetPage() {
+			location.reload();
+		}
+	</script>	
+	<style>
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			gap: 1px;
+			width: 450px; /* Adjust as needed */
+			height: 300px; /* Adjust as needed */
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.droppable-area {
+			width: 100%;
+			height: 100%;
+			border: 2px solid #000;
+			position: relative;
+		}
+
+        .pictures{
+            width: 100%;
+            height: 100%;
+        }
+
+	</style>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h3>Image Puzzle...</h3>
-<div class="main-container">    
-    <button alt="" name="1" value="1" id="1" style="background: url(image.jpg) no-repeat;">1</button>
-    <button alt="" name="2" value="2" id="2" style="background: url(dahlia-red-blossom-bloom-60597_02.jpg) no-repeat;">2</button>
-    <button alt="" name="3" value="3" id="3" style="background: url(dahlia-red-blossom-bloom-60597_03.jpg) no-repeat;">3</button>
-    <button alt="" name="4" value="4" id="4" style="background: url(dahlia-red-blossom-bloom-60597_04.jpg) no-repeat;">4</button>
-    <button alt="" name="5" value="5" id="5" style="background: url(dahlia-red-blossom-bloom-60597_05.jpg) no-repeat;">5</button>
-    <button alt="" name="6" value="6" id="6" style="background: url(dahlia-red-blossom-bloom-60597_06.jpg) no-repeat;">6</button>
-    <button alt="" name="7" value="7" id="7" style="background: url(dahlia-red-blossom-bloom-60597_07.jpg) no-repeat;">7</button>
-    <button alt="" name="8" value="8" id="8"></button>
-    <button alt="" name="9" value="9" id="9" style="background: url(dahlia-red-blossom-bloom-60597_08.jpg) no-repeat;">8</button>
+<h1 class='gameTitle'>Drag the Pieces Together</h1>
+
+<button class="returnButton" onclick="window.location.href='index.html';">BACK</button>
+
+<div class="grid-container">
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+	  		<img class="pictures" src="piece6.jpg">	
+		</div>
+	</div>
+
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+            <img class="pictures" src="piece3.jpg">	
+        </div>
+	</div>
+
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+	  		<img class="pictures" src="piece2.jpg">	
+		</div>
+	</div>
+
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+	  		<img class="pictures" src="piece5.jpg">	
+		</div>
+	</div>
+
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+	  		<img class="pictures" src="piece4.jpg">	
+		</div>
+	</div>
+
+	<div class="droppable-area">
+		<div class="moveit ui-widget-content">
+	  		<img class="pictures"src="piece1.jpg">	
+		</div>
+	</div>
 </div>
-<span>TEST</span>
+
+<button class="resetButton" onclick="resetPage();">RESET</button> 
+
 </body>
 </html>
-<script>
-$(document).ready(function(){
-var upval, downval, leftval, rightval, txt, bVal;
-$("button").click(function(){
-    txt = $(this).text();
-    bVal = $(this).val();   
-    if(txt != ""){
-        if((bVal != 1) && (bVal != 2) &&(bVal != 3)){
-            upval = eval(eval(bVal)-eval(3));           
-            console.log(bVal+'- 3 = '+upval);
-            var upTxt = $("#"+upval).text();
-            if(upTxt == ""){            
-                $("#"+upval).text(txt);
-                $(this).text("");
-                $(this).css({'background': ''});
-                $("#"+upval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
-            }
-        }
-        if((bVal != 7) && (bVal != 8) &&(bVal != 9)){
-            downval = eval(eval(bVal)+ eval(3));            
-            console.log(bVal+'+3 = '+downval);
-            var downTxt = $("#"+downval).text();
-            if(downTxt == ""){          
-                $("#"+downval).text(txt);
-                $(this).text("");
-                $(this).css({'background': ''});
-                $("#"+downval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
-            }
-        }
-        if((bVal != 1) && (bVal != 4) &&(bVal != 7)){
-            leftval = eval(eval(bVal)-eval(1)); 
-            console.log(bVal+'-1 = '+leftval);        
-            var leftTxt = $("#"+leftval).text();
-            if(leftTxt == ""){          
-                $("#"+leftval).text(txt);
-                $(this).text("");
-                $(this).css({'background': ''});
-                $("#"+leftval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
-            }
-        }
-        if((bVal != 3) && (bVal != 6) &&(bVal != 9)){
-            rightval = eval(eval(bVal)+ eval(1));
-            console.log(bVal+'+1 = '+rightval);           
-            var rightTxt = $("#"+rightval).text();          
-            if(rightTxt == ""){                 
-                $("#"+rightval).text(txt);
-                $(this).text("");
-                $(this).css({'background': ''});
-                $("#"+rightval).css({'background': 'url(dahlia-red-blossom-bloom-60597_0'+txt+'.jpg)'});
-            }
-        }
-        var one = $("#1").text();
-        var two = $("#2").text();
-        var three = $("#3").text();
-        var four = $("#4").text();
-        var five = $("#5").text();
-        var six = $("#6").text();
-        var seven = $("#7").text();
-        var eight = $("#8").text();
-        var nine = $("#9").text();
-
-        if((one == "1")&&(two == "2")&&(three == "3")&&(four == "4")&&(five == "5")&&(six == "6")&&(seven == "7")&&(eight == "8")&&(nine == "")){           
-            alert("Success");
-            $("button").attr("disabled", "disabled");
-        }               
-    }   
-});
-
-});
-
-
-</script>

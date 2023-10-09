@@ -1,35 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Puzzle</title>
-    <link rel="stylesheet" href="styles.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/trontastic/jquery-ui.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+
+
+   function resetPage2() {
+       location.reload();
+   }
+  
+ 
+  $("#moveUp").click(function() {
+       $( ".lastPiece" ).animate({
+           top: '-=25px'},
+           250);
+   });
+        
+   $("#moveDown").click(function() {
+   $( ".lastPiece" ).animate({
+       top: '+=25px'},
+       250);
+   });     
+     
+   $("#moveLeft").click(function() {
+   $( ".lastPiece" ).animate({
+           left: '-=25px'},
+           250);
+   });  
+          
+   $("#moveRight").click(function() {
+   $( ".lastPiece" ).animate({
+           left: '+=25px'},
+           250);
+   }); 
+
+
+ 
+}); 
+</script>
+<style>
+
+
+   .imageBox {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       grid-template-rows: repeat(2, 1fr);
+       grid-gap: 1px;
+       position: absolute;
+       top: 30%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+   }
+
+
+   .section {
+       width: 150x;
+       height: 150px;
+   }
+
+
+   .puzzlePiece {
+       width: 150px;
+       height: 150px;
+       object-fit: cover;
+   }
+   .lastPiece {
+       width: 150px;
+       height: 150px;
+       object-fit: cover;
+   }
+   .upButton {
+       font-weight: bold;
+       background-color:tomato
+   }
+   .downButton {
+       font-weight: bold;
+       background-color: greenyellow
+   }
+   .leftButton {
+       font-weight: bold;
+       background-color:aqua
+   }
+   .rightButton {
+       font-weight: bold;
+       background-color:palevioletred
+   }
+</style>
+   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="puzzle-container">
-        <!-- Place the puzzle pieces here with unique IDs -->
-        <div class="piece" ></div>
-        <!-- <div class="piece" id="piece1"></div> -->
-        <!-- <div class="piece" id="piece2"></div> -->
-        <!-- Add the rest of the pieces -->
-        <!-- ... -->
-    </div>
-    <div class="imageBox">
-        <div class="section" id="section1"></div>
-        <div class="section" id="section2"></div>
-        <div class="section" id="section3"></div>
-        <div class="section" id="section4"></div>
-        <div class="section" id="section5"></div>
-        <div class="section" id="section6"></div>
-    </div>
-    <div class="controls">
-        <button id="moveUp">Up</button>
-        <button id="moveDown">Down</button>
-        <button id="moveLeft">Left</button>
-        <button id="moveRight">Right</button>
-    </div>
-    <script src="jquery.min.js"></script>
-    <script src="script.js"></script>
+ 
+
+
+<div>
+ <h1 class="gameTitle">Move last piece in place</h1>
+ <div class="controller">
+   <input class="upButton" type="button" id="moveUp" value="Up" /">
+   <input class="downButton" type="button" id="moveDown" value="Down" /">
+   <input class="leftButton" type="button" id="moveLeft" value="Left" /">
+   <input class="rightButton" type="button" id="moveRight" value="Right" /">
+ </div>
+</div>
+
+
+<button class="resetButton" onclick="window.location.href='index.html';">BACK</button>
+
+
+<div class="imageBox">
+   <div class="section" id="section1">
+       <img class="puzzlePiece" src="piece1.jpg">
+   </div>
+   <div class="section" id="section2">
+       <img class="puzzlePiece" src="piece2.jpg">
+   </div>
+   <div class="section" id="section3">
+   </div>
+   <div class="section" id="section4">
+       <img class="puzzlePiece" src="piece4.jpg">
+   </div>
+   <div class="section" id="section5">
+       <img class="puzzlePiece" src="piece5.jpg">
+   </div>
+   <div class="section" id="section6">
+       <img class="puzzlePiece" src="piece6.jpg">
+   </div>
+</div>
+
+
+<img class="lastPiece" src='piece3.jpg' style="position: absolute; top:500px; left: 50%; transform: translate(-50%, -50%);">
+
+
 </body>
 </html>
+
